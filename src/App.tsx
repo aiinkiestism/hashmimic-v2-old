@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import './App.css'
-import { WebGL } from './components';
+import { useState } from 'react';
+import './App.css';
+import { WebGLText } from './components/ref/WebGLText';
 
 function App() {
   return (
     <div className="App">
-      <WebGL />
+      <WebGLText />
     </div>
   )
 }
