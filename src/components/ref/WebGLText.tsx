@@ -45,10 +45,10 @@ export const WebGLText: React.FC = () => {
     })
   })
   return (
-    <Canvas shadows orthographic camera={{ position: [10, 20, 20], zoom: 80 }} gl={{ preserveDrawingBuffer: true }} style={{ width: '1200px', height: '800px' }}>
-      <color attach="background" args={['#f2f2f5']} />
+    <Canvas shadows orthographic camera={{ position: [-2.5, 0, 10], zoom: 40 }} gl={{ preserveDrawingBuffer: true }} style={{ width: '1300px', height: '100vh' }}>
+      <color attach="background" args={['#000']} />
       {/** The text and the grid */}
-      <Text config={config} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 2.25]}>
+      <Text config={config} position={[0, 0, 0]}>
         {text}
       </Text>
       {/** Controls */}
