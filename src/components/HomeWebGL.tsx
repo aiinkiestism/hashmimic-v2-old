@@ -13,7 +13,6 @@ import {
   AccumulativeShadows,
   MeshTransmissionMaterial
 } from '@react-three/drei'
-import { useControls, button } from 'leva';
 
 export const HomeWebGL: React.FC = () => {
   return (
@@ -33,22 +32,22 @@ const Text: React.FC<TextProps> = (props) => {
   const texture = useLoader(RGBELoader, 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr');
   const font = '/Inter_Medium_Regular.json';
   const materialConfig = {
-    // backside: false,
-    // samples: { value: 16, min: 1, max: 32, step: 1 },
-    // resolution: { value: 512, min: 64, max: 2048, step: 64 },
-    // transmission: { value: 0.6, min: 0, max: 1 },
-    // clearcoat: { value: 0, min: 0.1, max: 1 },
-    // clearcoatRoughness: { value: 0.0, min: 0, max: 1 },
-    // thickness: { value: 0.55, min: 0, max: 5 },
-    // chromaticAberration: { value: 5, min: 0, max: 5 },
-    // anisotropy: { value: 0.3, min: 0, max: 1, step: 0.01 },
-    // roughness: { value: 0.0, min: 0, max: 1, step: 0.01 },
-    // distortion: { value: 1, min: 0, max: 4, step: 0.01 },
-    // distortionScale: { value: 1, min: 0.01, max: 1, step: 0.01 },
-    // temporalDistortion: { value: 0.4, min: 0, max: 1, step: 0.01 },
-    // ior: { value: 0.83, min: 0, max: 2, step: 0.01 },
-    // color: '#ff9cf5',
-    // gColor: '#ff7eb3',
+    backside: false,
+    samples: 16,
+    resolution: 512,
+    transmission: 0.6,
+    clearcoat: 0,
+    clearcoatRoughness: 0.0,
+    thickness: 0.55,
+    chromaticAberration: 5,
+    anisotropy: 0.3,
+    roughness: 0.0,
+    distortion: 1,
+    distortionScale: 1,
+    temporalDistortion: 0.4,
+    ior: 0.83,
+    color: '#ff9cf5',
+    gColor: '#ff7eb3',
   };
 
   return (
@@ -67,7 +66,7 @@ const Text: React.FC<TextProps> = (props) => {
             curveSegments={128}
             bevelThickness={0.01}>
             {text}
-            <MeshTransmissionMaterial distortionScale={1} temporalDistortion={0.4} reflectivity={0.5} {...materialConfig} background={texture} />
+            <MeshTransmissionMaterial reflectivity={0.5} {...materialConfig} background={texture} />
           </Text3D>
         </Center>
         <Grid />
