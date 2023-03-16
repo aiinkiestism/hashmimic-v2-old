@@ -4,8 +4,6 @@ import { RGBELoader } from 'three-stdlib'
 import {
   Center,
   Text3D,
-  Instance,
-  Instances,
   Environment,
   Lightformer,
   OrbitControls,
@@ -13,6 +11,7 @@ import {
   AccumulativeShadows,
   MeshTransmissionMaterial
 } from '@react-three/drei'
+import { CustomGridHelper } from '.';
 
 export const HomeWebGL: React.FC = () => {
   return (
@@ -69,30 +68,8 @@ const Text: React.FC<TextProps> = (props) => {
             <MeshTransmissionMaterial reflectivity={0.5} {...materialConfig} background={texture} />
           </Text3D>
         </Center>
-        <Grid />
+        <CustomGridHelper />
       </group>
     </>
   );
 };
-
-interface GridProps {
-  number?: number;
-  lineWidth?: number;
-  height?: number;
-}
-
-const Grid: React.FC<GridProps> = ({ number = 23, lineWidth = 0.026, height = 0.5 }) => (
-  <Instances position={[0, -1.02, 0]}>
-    <planeGeometry args={[lineWidth, height]} />
-    <meshBasicMaterial color="#999" />
-    {Array.from({ length: number }, (_, y) =>
-      Array.from({ length: number }, (_, x) => (
-        <group key={x + ':' + y} position={[x * 2 - Math.floor(number / 2) * 2, -0.01, y * 2 - Math.floor(number / 2) * 2]}>
-          <Instance rotation={[-Math.PI / 2, 0, 0]} />
-          <Instance rotation={[-Math.PI / 2, 0, Math.PI / 2]} />
-        </group>
-      ))
-    )}
-    <gridHelper args={[100, 100, '#bbb', '#bbb']} position={[0, -0.01, 0]} />
-  </Instances>
-)

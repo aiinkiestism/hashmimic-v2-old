@@ -8,10 +8,10 @@ import { HomeWebGL } from './components';
 function App() {
   return (
     <div className="App">
-      {/* <WebGLText /> */}
+      <WebGLText />
       {/* <WebGLParticle /> */}
       {/* <WegGLPhisics /> */}
-      <HomeWebGL />
+      {/* <HomeWebGL /> */}
     </div>
   )
 }

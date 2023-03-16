@@ -128,7 +128,7 @@ function Text({ children, config, font = '/Inter_Medium_Regular.json', ...props 
             <MeshTransmissionMaterial reflectivity={0.5} {...config} background={texture} />
           </Text3D>
         </Center>
-        <Grid />
+        {/* <Grid /> */}
       </group>
     </>
   )
