@@ -7,11 +7,11 @@ import { HomeWebGL } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <WebGLText />
+    <div className="App" style={{ width: '100%', height: '100vh' }}>
+      {/* <WebGLText /> */}
       {/* <WebGLParticle /> */}
       {/* <WegGLPhisics /> */}
-      {/* <HomeWebGL /> */}
+      <HomeWebGL />
     </div>
   )
 }
