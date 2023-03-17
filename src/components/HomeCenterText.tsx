@@ -1,9 +1,10 @@
 import { Center, Text3D, MeshTransmissionMaterial } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-import { useState } from "react";
-import { RGBELoader } from 'three-stdlib'
+import { useState, useEffect } from "react";
 import { Vector3Tuple } from "three";
 import { CustomGridHelper } from '.';
+import { HOME_TRANSMISSION_MATERIAL_CONFIG } from "./config";
+import { useLoader } from "@react-three/fiber";
+import { RGBELoader } from "three-stdlib";
 
 interface TextProps {
   position: Vector3Tuple;
@@ -11,26 +12,8 @@ interface TextProps {
 
 export const HomeCenterText: React.FC<TextProps> = (props) => {
   const [text, setText] = useState<string>('Hashmimic');
-  const texture = useLoader(RGBELoader, 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr');
   const font = '/Inter_Medium_Regular.json';
-  const materialConfig = {
-    backside: false,
-    samples: 16,
-    resolution: 512,
-    transmission: 0.6,
-    clearcoat: 0,
-    clearcoatRoughness: 0.0,
-    thickness: 0.55,
-    chromaticAberration: 5,
-    anisotropy: 0.3,
-    roughness: 0.0,
-    distortion: 1,
-    distortionScale: 1,
-    temporalDistortion: 0.4,
-    ior: 0.83,
-    color: '#ff9cf5',
-    gColor: '#ff7eb3',
-  };
+  const texture = useLoader(RGBELoader, 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr');
 
   return (
     <>
@@ -48,7 +31,7 @@ export const HomeCenterText: React.FC<TextProps> = (props) => {
             curveSegments={128}
             bevelThickness={0.01}>
             {text}
-            <MeshTransmissionMaterial reflectivity={0.5} {...materialConfig} background={texture} />
+            <MeshTransmissionMaterial reflectivity={0.05} {...HOME_TRANSMISSION_MATERIAL_CONFIG} background={texture} transmission={0.1} roughness={0} thickness={0.8} envMapIntensity={1} />
           </Text3D>
         </Center>
         {/* <CustomGridHelper /> */}
