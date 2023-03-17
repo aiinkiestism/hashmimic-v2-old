@@ -6,7 +6,6 @@ import {
   AccumulativeShadows,
 } from '@react-three/drei'
 import { CustomGridHelper, HomeCenterText, Particles } from '.';
-import { useEffect } from 'react';
 
 export const HomeWebGL: React.FC = () => {
   return (
